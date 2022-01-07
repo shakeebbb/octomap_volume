@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="vehicle_name" default=""/>
+
+  <node pkg="octomap_volume" type="octomap_volume" name="octomap_volume">
+		
+		<remap from="~/octomap_in" to="$(arg vehicle_name)/merged_map" /> 
+    <remap from="~/volume_out" to="$(arg vehicle_name)/volume_out" /> 
+	
+	</node>
+
+</launch>
