@@ -32,6 +32,11 @@ void octomap_cb(const octomap_msgs::Octomap& msg)
 	if(!octTree)
 		return;
 
- 	volumeOut.data = octTree->getNumLeafNodes() * msg.resolution * msg.resolution * msg.resolution;
+  volumeOut.data = 0;
+
+	for( OcTreeT::leaf_iterator it = octTree->begin_leafs(); it!=octTree->end_leafs(); ++it )
+		volumeOut.data += (msg.resolution * msg.resolution * msg.resolution);
+
   volumePub.publish(volumeOut);
+  delete octTree;
 }
