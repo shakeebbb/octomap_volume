@@ -16,6 +16,12 @@ int main(int argc, char **argv)
 
   ros::Subscriber octomapSub = nh.subscribe("octomap_in", 10, octomap_cb);
   volumePub = nh.advertise<std_msgs::Float64>("volume_out", 10);
+  
+  #ifdef WITH_ROUGHNESS
+    ROS_WARN("octomap_volume: Running With Roughness");
+  #else
+    ROS_WARN("octomap_volume: Running Without Roughness");
+  #endif
 	
 	ros::spin();
 	return 0;

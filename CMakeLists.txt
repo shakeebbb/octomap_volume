@@ -4,7 +4,7 @@ project(octomap_volume)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
-OPTION(WITH_ROUGHNESS "Build with traversability info?" ON)
+OPTION(WITH_ROUGHNESS "Build with traversability info?" OFF)
 IF(WITH_ROUGHNESS)
   add_definitions(-DWITH_ROUGHNESS)
 ENDIF()
